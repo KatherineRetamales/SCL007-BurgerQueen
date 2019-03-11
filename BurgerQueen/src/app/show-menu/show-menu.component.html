@@ -1,20 +1,38 @@
-
-<button class="btn btn-warning">Desayuno</button>
-<button class="btn btn-secondary">Almuerzo y cena</button>
-<div class="table-responsive">
-<table class="table table-hover">
-  <tr>
-    <th>#</th>
-    <th>Menu desayuno</th>
-    <th>Precio</th>
-    <th></th>
-  </tr>
-  <tr *ngFor="let breakfast of breakfastMenu;index as i;">
-    <td>{{i + 1}}</td>
-    <td>{{breakfast.name}}</td>
-    <td>${{breakfast.price}}</td>
-    <td><a><i class="fas fa-plus-circle"></i></a></td>
-  </tr>
-</table>
+<div class="card">
+  <div class="card-body">
+    <button class="btn btn-warning" (click)="activo = 'primero'">Desayuno</button>
+    <button class="btn btn-secondary" (click)="activo = 'segundo'">Almuerzo y cena</button>
+  </div>
 </div>
-
+<div class="card">
+  <div class="card-body">
+    <table class="table table-hover d-none" [ngClass]="{ 'd-block': activo == 'primero' }">
+      <tr>
+        <th>#</th>
+        <th>Menu desayuno</th>
+        <th>Precio</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let breakfast of breakfastMenu;index as i;">
+        <td>{{i + 1}}</td>
+        <td>{{breakfast.name}}</td>
+        <td>${{breakfast.price}}</td>
+        <td><a><i class="fas fa-plus-circle"></i></a></td>
+      </tr>
+    </table>
+    <table class="table table-hover d-none" [ngClass]="{ 'd-block': activo == 'segundo' }">
+      <tr>
+        <th>#</th>
+        <th>Menu almuerzo y cena</th>
+        <th>Precio</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let lunch of lunchMenu;index as i;">
+        <td>{{i + 1}}</td>
+        <td>{{lunch.name}}</td>
+        <td>${{lunch.price}}</td>
+        <td><a><i class="fas fa-plus-circle"></i></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
