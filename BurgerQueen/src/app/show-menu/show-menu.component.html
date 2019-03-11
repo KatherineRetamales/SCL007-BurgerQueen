@@ -1,6 +1,15 @@
 <p>
   show-menu works!
 </p>
-<ul *ngFor="let breakfast of breakfastMenu"> 
-  <li>{{breakfast.name}} ${{breakfast.sale}}</li>
-</ul>
+<table class="table table-hover">
+  <tr>
+    <th>Menu desayuno</th>
+    <th>Precio</th>
+  </tr>
+  <tr *ngFor="let breakfast of breakfastMenu">
+    <td>{{breakfast.name}}</td>
+    <td>${{breakfast.price}}</td>
+    <td><a>Agregar</a></td>
+  </tr>
+</table>
+

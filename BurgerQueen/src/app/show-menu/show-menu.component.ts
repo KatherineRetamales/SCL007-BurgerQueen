@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowMenuComponent implements OnInit {
   breakfastMenu:Array<any> = [
-    {name:'Cafe con leche',sale: 700},
-    {name:'Cafe americano',sale: 500},
-    {name:'Jugo natural',sale: 700},
-    {name:'Sandwich de jamon y queso',sale: 1000}
+    {name:'Cafe con leche',price: 700},
+    {name:'Cafe americano',price: 500},
+    {name:'Jugo natural',price: 700},
+    {name:'Sandwich de jamon y queso',price: 1000}
   ]
   constructor() { 
     
