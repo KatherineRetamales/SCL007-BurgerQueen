@@ -1,17 +1,19 @@
 <nav class="navbar navbar-dark bg-dark mb-0 h1">
-  <a class="navbar-brand" href="/_">Burgen Queen</a>
+  <a class="navbar-brand" href="/_">{{title}}</a>
 </nav>
+<div class="container">
+    <div class="col-xs-20 col-md-12">
+        <app-clients></app-clients>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+          <app-products></app-products>
+      </div>
+      <div class="col-xs-6 col-md-4">
+          
+      </div>
+    </div>
+</div>
 
-<div class="row">
-  <div class="col-xs-12 ">
-    <app-save-client></app-save-client>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-6 ">
-    <app-show-menu></app-show-menu>
-  </div>
-  <div class="col-xs-6">
-    <app-show-order></app-show-order>
-  </div>
-</div>
+
+

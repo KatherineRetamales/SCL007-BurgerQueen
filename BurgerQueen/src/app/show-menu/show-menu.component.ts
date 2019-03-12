@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import {ServiceFirebaseService} from '../services/service-firebase.service'
+import { NgForm } from '@angular/forms';
+import { Product } from '../models/product';
+
 @Component({
   selector: 'app-show-menu',
   templateUrl: './show-menu.component.html',
@@ -22,7 +26,21 @@ export class ShowMenuComponent implements OnInit {
     { name: 'Gaseosa 500ml', price: 700 },
     { name: 'Gaseosa 750ml', price: 1000 },
   ];
-  constructor() {}
+  constructor(private productService : ServiceFirebaseService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.productService.getProduct();
+    this.resetForm();
+  }
+  
+  onSubmit(productForm: NgForm) {
+    this.productService.insertProduct(productForm.value);
+    this.resetForm(productForm);
+  }
+  resetForm(productForm?: NgForm) {
+    if(productForm != null){
+      productForm.reset();
+      this.productService.selectedProduct = new Product();
+    }
+  }
 }

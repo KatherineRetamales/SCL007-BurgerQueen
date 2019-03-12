@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceFirebaseService } from '../services/service-firebase.service';
+import { NgForm } from '@angular/forms';
+import { Client } from "../models/Client";
 
 @Component({
   selector: 'app-save-client',
@@ -8,9 +10,13 @@ import { ServiceFirebaseService } from '../services/service-firebase.service';
 })
 export class SaveClientComponent implements OnInit {
 
-  constructor() { }
+  constructor(private clientService : ServiceFirebaseService) { }
 
   ngOnInit() {
+    this.clientService.getClient();
+  }
+  onSubmit(clientForm: NgForm) {
+    this.clientService.insertClient(clientForm.value);
   }
 
 }
