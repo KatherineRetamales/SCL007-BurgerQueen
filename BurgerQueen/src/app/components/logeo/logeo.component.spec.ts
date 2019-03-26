@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowMenuComponent } from './show-menu.component';
+import { LogeoComponent } from './logeo.component';
 
-describe('ShowMenuComponent', () => {
-  let component: ShowMenuComponent;
-  let fixture: ComponentFixture<ShowMenuComponent>;
+describe('LogeoComponent', () => {
+  let component: LogeoComponent;
+  let fixture: ComponentFixture<LogeoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowMenuComponent ]
+      declarations: [ LogeoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowMenuComponent);
+    fixture = TestBed.createComponent(LogeoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

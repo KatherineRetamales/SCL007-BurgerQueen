@@ -258,7 +258,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\n  <li *ngFor=\"let item of items\">\n    {{item.id}}--{{ item.name }}//Producto:{{item.products[0].id}}\n    ///{{item.products[0].order}} ${{item.products[0].price}}\n  </li>\n</ul>\n"
+module.exports = "<table class=\"table table-dark mt-3\">\n  <thead>\n    <tr>\n      <th scope=\"col\">Cliente</th>\n      <th scope=\"col\">Pedido</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let item of items;\">\n      <td>{{item.name}}</td>\n      <td>{{item.products[0].order}} ${{item.products[0].price}}</td>\n    </tr>\n  </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -450,7 +450,7 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false,
+    production: true,
     firebase: {
         apiKey: "AIzaSyDvqTtA6pCDM-pzfmzGUtPlgNi7_4MtiSI",
         authDomain: "burgerqueen-2b299.firebaseapp.com",

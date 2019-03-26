@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientsService} from '../../services/clients.service'
-import { NgForm } from '@angular/forms';
-
 
 @Component({
   selector: 'app-clients',
@@ -9,12 +7,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-
-  constructor(private clientService : ClientsService) { }
+  item: any = {
+    name:""
+  }
+  item1: any ={
+    product:[]
+  }
+  constructor(private service : ClientsService) { }
 
   ngOnInit() {
   }
-  onSubmit(clientForm: NgForm) {
-    this.clientService.insertClient(clientForm.value);
+  saveClient(){
+    this.service.addItem(this.item);
   }
+  addOrder() {
+    (this.item1.product).push();
+    console.log(this.item1.product);  
+  }
+  
 }

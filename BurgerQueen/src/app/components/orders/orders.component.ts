@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ClientsService} from '../../services/clients.service';
+
 
 @Component({
   selector: 'app-orders',
@@ -6,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
+  items:any;
 
-  constructor() { }
-
+  constructor(private service: ClientsService) { 
+    this.service.listClient().subscribe(item =>{
+      this.items= item;
+      console.log(item);
+      
+    });
+  }
+    
   ngOnInit() {
   }
 
