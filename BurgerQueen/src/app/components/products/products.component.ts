@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientsService} from '../../services/clients.service'
 
-
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -27,32 +25,48 @@ export class ProductsComponent implements OnInit {
     { order: 'Gaseosa 500ml', price: 700 },
     { order: 'Gaseosa 750ml', price: 1000 },
   ];
+ show:any;
+  item: any = {
+ 
+  }
 
-
-  item: any =[ {
-    
+  items: any =[ {
+    order:'',
+    price:''
   }]
+
+  total:number;
+  total1: number;
 
   constructor(private service:ClientsService) { }
 
   ngOnInit() {
+   
+
   }
 
   add() {
     this.service.addItem(this.item);
-    this.item.name = '';
+   //console.log('orders:',this.item);
+    
+  }
+  array(products: any) {
+    this.items.push(products);
+    this.total = this.items.reduce((acc,obj,) => acc +(obj.price),0);
+    console.log(this.items);  
+  }
 
-  }
-  array(value: any) {
-    (this.item).push(value);
-    console.log(this.item);
-  }
+/*   array1(products: any) {
+    this.item.push(products);
+    this.total = this.items.reduce((acc,obj,) => acc +(obj.price),0);
+    //console.log(this.item);
+  } */
 
   delete(i):void{
-    let answer = confirm('Seguro que quiere eliminar el producto');
-    if(answer){
-      this.item.splice(i,1)
-    }
+    /* let answer = confirm('Seguro que quiere eliminar el producto');
+    if(answer){ */
+      this.items.splice(i,1)
+   /*  } */
   }
 
 

@@ -1,45 +1,54 @@
-<div class="card">
-  <div class="card-body">
-    <input type="text" placeholder="Nombre Cliente" name="name" class="form-control mt-3" [(ngModel)]="item.name">
-    <button class="btn btn-warning mt-3 mb-3 mr-3" (click)="show = 'breakfast'">Desayuno</button>
-    <button class="btn btn-warning mt-3 mb-3 mr-3" (click)="show = 'lunch'">Almuerzo y cena</button>
-
-    <div class="d-none" [ngClass]="{ 'd-block': show == 'breakfast' }">
-      <a class="btn btn-squared-default btn-success" (click)="array(breakfast)"
-        *ngFor="let breakfast of breakfastMenu;">
-        {{breakfast.order}}
-        ${{breakfast.price}}
-      </a>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 mt-5">
+      <div class="card mt-5">
+        <div class="card-body">
+          <button class="btn btn-warning mt-3 mb-3 mr-3" (click)="show = 'breakfast'">Desayuno</button>
+          <button class="btn btn-warning mt-3 mb-3 mr-3" (click)="show = 'lunch'">Almuerzo y cena</button>
+          <input type="text" placeholder="Nombre Cliente" name="name" class="form-control mt-3" [(ngModel)]="item.name">
+          <div class="d-none mt-3" [ngClass]="{ 'd-block': show == 'breakfast' }">
+            <a class="btn btn-squared-default btn-success" (click)="array(breakfast)"
+              *ngFor="let breakfast of breakfastMenu;">
+              {{breakfast.order}}
+              ${{breakfast.price}}
+            </a>
+          </div>
+          <div class="d-none mt-3" [ngClass]="{ 'd-block': show == 'lunch' }">
+            <a class="btn btn-squared-default btn-success" (click)="array(lunch)" *ngFor="let lunch of lunchMenu;">
+              {{lunch.order}}
+              ${{lunch.price}}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="d-none" [ngClass]="{ 'd-block': show == 'lunch' }">
-      <a class="btn btn-squared-default btn-success" (click)="array(lunch)" *ngFor="let lunch of lunchMenu;">
-        {{lunch.order}}
-        ${{lunch.price}}
-      </a>
+    <div class="col-xs-12 col-md-8">
+      <form (ngSubmit)="add()">
+        <table class="table table-dark mt-3">
+          <tr>
+            <th>Cliente</th>
+            <td>{{items.name}}</td>
+          </tr>
+          <tr>
+            <th scope="col">Pedido</th>
+            <th scope="col">Precio</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{item.order}}</td>
+            <td>{{item.price}}</td>
+            <td><a class="btn" (click)="delete(i)"><i class="fas fa-trash-alt"></i></a></td>
+          </tr>
+          <tr>
+            <td>{{total}}</td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-warning mt-3 mb-3" type="submit" (click)="array1(items)">Enviar a cocina</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
   </div>
 </div>
-
-<form (ngSubmit)="add()">
-  <table class="table table-dark mt-3">
-
-    <tr>
-      <th>Cliente</th>
-      <td>{{item.name}}</td>
-    </tr>
-    <tr>
-      <th scope="col">Pedido</th>
-      <th scope="col">Precio</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let ite of item; let i = index">
-      <td>{{ite.order}}</td>
-      <td>{{ite.price}}</td>
-      <td><a class="btn" (click)="delete(i)"><i class="fas fa-trash-alt"></i></a></td>
-    </tr>
-    <tr>
-      <td><button class="btn btn-warning mt-3 mb-3" type="submit">Enviar a cocina</button></td>
-    </tr>
-    </tbody>
-  </table>
-</form>
